@@ -11,5 +11,6 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Happy flappy bird");
 		new Lwjgl3Application(new MyGdxGame(), config);
+		config.setWindowedMode(MyGdxGame.SCR_WIDTH,MyGdxGame.SCR_HEIGHT);
 	}
 }

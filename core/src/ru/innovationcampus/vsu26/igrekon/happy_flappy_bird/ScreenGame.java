@@ -1,7 +1,9 @@
 package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class ScreenGame implements Screen {
@@ -15,6 +17,7 @@ public class ScreenGame implements Screen {
         this.myGdxGame=myGdxGame;
         birdTexture = new Texture("bird0.png");
     }
+
     @Override
     public void show() {
 
@@ -31,6 +34,9 @@ public class ScreenGame implements Screen {
         myGdxGame.batch.begin();
         myGdxGame.batch.draw(birdTexture, birdX, birdY);
         myGdxGame.batch.end();
+        if (Gdx.input.justTouched()){
+            System.out.println("Just touched");
+        }
     }
 
     @Override

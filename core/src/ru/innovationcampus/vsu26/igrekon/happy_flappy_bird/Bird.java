@@ -5,23 +5,27 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Bird{
     int x,y;
+    int birdWith,birdHeight;
     int speed;
-    Texture texture;
     Texture[] framesArray = new Texture[]{
             new Texture("birdTiles/bird0.png"),
             new Texture("birdTiles/bird1.png"),
             new Texture("birdTiles/bird2.png"),
             new Texture("birdTiles/bird1.png"),
     };
+    int frameCounter;
     int jumpHeight;
     final  int maxHeightOfJump = 200;
     boolean jump;
 
-    public Bird(int x, int y,Texture texture,int speed){
+    public Bird(int x, int y,int speed, int birdWith, int birdHeight){
         this.x =x;
         this.y =y;
-        this.texture = texture;
         this.speed = speed;
+        this.birdWith = birdWith;
+        this.birdHeight = birdHeight;
+
+
 
 
 
@@ -29,28 +33,32 @@ public class Bird{
 
     void onClick() {
         jump =true;
-        jumpHeight = maxHeightOfJump+y;
+        jumpHeight = maxHeightOfJump + y;
 
 
     }
     public void fly(){
         if (y>=jumpHeight){
-
-            if (jump) {
-                y += speed;
-            }else{
-                y-=speed;
-            }
             jump=false;
+        }
+
+        if (jump) {
+            y += speed;
+        }else{
+            y-=speed;
         }
 
     }
 
     public void draw(Batch batch){
-        batch.draw(texture,x,y);
+        int frameMultiplier = 10;
+        batch.draw(framesArray[frameCounter / frameMultiplier],x, y, birdWith, birdHeight);
+        if (frameCounter++ == framesArray.length * frameMultiplier -1) frameCounter = 0;
     }
+
     public void dispose(){
-        texture.dispose();
+        for (Texture texture : framesArray)
+            texture.dispose();
     }
 
 

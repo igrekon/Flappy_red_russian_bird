@@ -10,16 +10,29 @@ public class ScreenGame implements Screen {
 
     MyGdxGame myGdxGame;
     Bird bird;
+    boolean isGameOver;
+
+    int tubeCount=3;
+    Tube[] tubes;
+
+
+
 
 
     ScreenGame(MyGdxGame myGdxGame){
         this.myGdxGame=myGdxGame;
+
+        tubes = new Tube[tubeCount];
+        for (int i=0; i < tubeCount;i++ ){
+            tubes[i] = new Tube(tubeCount,i);
+        }
 
         bird = new Bird(0,500,10,250,200);
     }
 
     @Override
     public void show() {
+        isGameOver = false;
 
     }
 
@@ -30,11 +43,13 @@ public class ScreenGame implements Screen {
         }
 
         bird.fly();
+        for (Tube tube : tubes) tube.move();
 
         ScreenUtils.clear(1, 1, 1, 1);
         myGdxGame.camera.update();
         myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
         myGdxGame.batch.begin();
+        for (Tube tube : tubes) tube.draw(myGdxGame.batch);
 
         bird.draw(myGdxGame.batch);
 
@@ -66,6 +81,15 @@ public class ScreenGame implements Screen {
     @Override
     public void dispose() {
         bird.dispose();
+        for (int i =0; i < tubeCount;i++){
+            tubes[i].dispose();
+        }
 
+    }
+    void initTubes() {
+        tubes = new Tube[tubeCount];
+        for (int i = 0; i < tubeCount; i++) {
+            tubes[i] = new Tube(tubeCount, i);
+        }
     }
 }

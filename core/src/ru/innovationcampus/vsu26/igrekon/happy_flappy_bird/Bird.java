@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class Bird{
     int x,y;
-    int birdWith,birdHeight;
+    int width, height;
     int speed;
     Texture[] framesArray = new Texture[]{
             new Texture("birdTiles/bird0.png"),
@@ -18,12 +18,12 @@ public class Bird{
     final  int maxHeightOfJump = 200;
     boolean jump;
 
-    public Bird(int x, int y,int speed, int birdWith, int birdHeight){
+    public Bird(int x, int y, int speed, int width, int height){
         this.x =x;
         this.y =y;
         this.speed = speed;
-        this.birdWith = birdWith;
-        this.birdHeight = birdHeight;
+        this.width = width;
+        this.height = height;
 
 
 
@@ -52,7 +52,7 @@ public class Bird{
 
     public void draw(Batch batch){
         int frameMultiplier = 10;
-        batch.draw(framesArray[frameCounter / frameMultiplier],x, y, birdWith, birdHeight);
+        batch.draw(framesArray[frameCounter / frameMultiplier],x, y, width, height);
         if (frameCounter++ == framesArray.length * frameMultiplier -1) frameCounter = 0;
     }
 

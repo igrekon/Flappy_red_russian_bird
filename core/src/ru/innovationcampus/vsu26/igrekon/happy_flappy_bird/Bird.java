@@ -62,4 +62,11 @@ public class Bird{
     }
 
 
+    public boolean isinField() {
+            if (y + height < 0) return false;
+            if (y > MyGdxGame.SCR_HEIGHT) return false;
+
+
+        return false;
+    }
 }

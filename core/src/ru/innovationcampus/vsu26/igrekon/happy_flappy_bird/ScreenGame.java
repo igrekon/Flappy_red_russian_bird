@@ -1,5 +1,8 @@
 package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird;
 
+import static ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame.SCR_HEIGHT;
+import static ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame.SCR_WIDTH;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,8 +14,17 @@ public class ScreenGame implements Screen {
     MyGdxGame myGdxGame;
     Bird bird;
     boolean isGameOver;
+    PointCounter pointCounter;
+
+    final int pointCounterMarginTop = 60;
+
+    final int pointCounterMarginRight = 400;
+
+
+
 
     int tubeCount=3;
+    int gamePoints;
     Tube[] tubes;
 
 
@@ -28,10 +40,12 @@ public class ScreenGame implements Screen {
         }
 
         bird = new Bird(0,500,10,250,200);
+        pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 
     @Override
     public void show() {
+        gamePoints = 0;
         isGameOver = false;
 
     }
@@ -40,22 +54,37 @@ public class ScreenGame implements Screen {
     public void render(float delta) {
         if (Gdx.input.justTouched()) {
             bird.onClick();
+
         }
 
         bird.fly();
-        for (Tube tube : tubes) tube.move();
+        if (!bird.isinField()){
+            System.out.println("not in field");
+            isGameOver = true;
+        }
+        for (Tube tube : tubes) {
+            tube.move();
 
-        ScreenUtils.clear(1, 1, 1, 1);
+            if (tube.isHit(bird)) {
+                System.out.println("hit");
+                isGameOver = true;
+            } else if (tube.needAddPoint(bird)) {
+                gamePoints+=1;
+                tube.setPointReceived();
+                System.out.println(gamePoints);
+            }
+        }
+
+        ScreenUtils.clear(0, 0.6f, 0.8f, 1);
         myGdxGame.camera.update();
         myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
         myGdxGame.batch.begin();
         for (Tube tube : tubes) tube.draw(myGdxGame.batch);
 
         bird.draw(myGdxGame.batch);
+        pointCounter.draw(myGdxGame.batch, gamePoints);
 
         myGdxGame.batch.end();
-
-
     }
 
     @Override
@@ -92,4 +121,7 @@ public class ScreenGame implements Screen {
             tubes[i] = new Tube(tubeCount, i);
         }
     }
+
+
+
 }

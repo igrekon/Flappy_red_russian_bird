@@ -40,6 +40,8 @@ public class ScreenGame implements Screen {
         for (int i=0; i < tubeCount;i++ ){
             tubes[i] = new Tube(tubeCount,i);
         }
+        initTubes();
+        background = new MovingBackground();
 
         bird = new Bird(20,SCR_HEIGHT /2,10,250,200);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);

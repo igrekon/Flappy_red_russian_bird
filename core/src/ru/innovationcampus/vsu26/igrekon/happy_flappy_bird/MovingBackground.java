@@ -12,7 +12,7 @@ public class MovingBackground {
     MovingBackground(){
         texture1X = 0;
         texture2X = MyGdxGame.SCR_WIDTH;
-        texture = new Texture("game_bg.png");
+        texture = new Texture("background/game_bg.png");
     }
 
 

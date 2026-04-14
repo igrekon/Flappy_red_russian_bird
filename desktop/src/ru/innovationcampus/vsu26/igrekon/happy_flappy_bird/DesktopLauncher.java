@@ -2,15 +2,14 @@ package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void main(String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
-		config.setTitle("Happy flappy bird");
+		config.setWindowedMode(1280, 720);
+		config.setTitle("FlappyBird");
 		new Lwjgl3Application(new MyGdxGame(), config);
-		config.setWindowedMode(MyGdxGame.SCR_WIDTH,MyGdxGame.SCR_HEIGHT);
 	}
 }

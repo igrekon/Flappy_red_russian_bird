@@ -45,7 +45,7 @@ public class ScreenGame implements Screen {
             tubes[i] = new Tube(tubeCount,i);
         }
         initTubes();
-        background = new MovingBackground();
+        background = new MovingBackground("background/game_bg.png");
 
         bird = new Bird(20,SCR_HEIGHT /2,10,250,200);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
@@ -81,6 +81,11 @@ public class ScreenGame implements Screen {
                 tube.setPointReceived();
                 System.out.println(gamePoints);
             }
+        }
+
+        if (isGameOver){
+            myGdxGame.screenRestart.gamePoints = gamePoints;
+            myGdxGame.setScreen(myGdxGame.screenRestart);
         }
 
         ScreenUtils.clear(0, 0.6f, 0.8f, 1);

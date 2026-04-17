@@ -69,6 +69,6 @@ public class Bird{
             if (y > MyGdxGame.SCR_HEIGHT) return false;
 
 
-        return false;
+        return true;
     }
 }

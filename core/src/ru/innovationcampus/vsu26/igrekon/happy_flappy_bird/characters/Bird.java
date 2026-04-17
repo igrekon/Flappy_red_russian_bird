@@ -33,6 +33,10 @@ public class Bird{
 
     }
 
+    public void setY(int v){
+        this.y = v;
+    }
+
     public void onClick() {
         jump =true;
         jumpHeight = maxHeightOfJump + y;

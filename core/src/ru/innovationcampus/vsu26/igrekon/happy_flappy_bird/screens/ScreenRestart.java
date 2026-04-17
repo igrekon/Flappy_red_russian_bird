@@ -1,6 +1,8 @@
 package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame;
@@ -35,6 +37,12 @@ public class ScreenRestart implements Screen {
         ScreenUtils.clear(1,0,0,1);
         myGdxGame.camera.update();
         myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
+        if (Gdx.input.justTouched()){
+            Vector3 touch = myGdxGame.camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+            if (buttonRestart.isHit((int)touch.x, (int)touch.y)) {
+                myGdxGame.setScreen(myGdxGame.screenGame);
+            }
+        }
 
 
         myGdxGame.batch.begin();
@@ -66,6 +74,8 @@ public class ScreenRestart implements Screen {
 
     @Override
     public void dispose() {
-
+        background.dispose();
+        pointCounter.dispose();
+        buttonRestart.dispose();
     }
 }

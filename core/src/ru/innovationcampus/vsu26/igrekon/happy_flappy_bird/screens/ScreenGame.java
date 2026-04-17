@@ -55,7 +55,8 @@ public class ScreenGame implements Screen {
     public void show() {
         gamePoints = 0;
         isGameOver = false;
-
+        bird.setY(SCR_HEIGHT / 2);
+        initTubes();
     }
 
     @Override
@@ -126,6 +127,9 @@ public class ScreenGame implements Screen {
         for (int i =0; i < tubeCount;i++){
             tubes[i].dispose();
         }
+        pointCounter.dispose();
+        background.dispose();
+
 
     }
     void initTubes() {

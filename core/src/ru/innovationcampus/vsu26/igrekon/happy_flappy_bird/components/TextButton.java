@@ -43,6 +43,10 @@ public class TextButton {
         font.draw(batch, text, textX, textY);
     }
 
+    public boolean isHit(int tx, int ty) {
+        return tx >= x && tx <= x + buttonWidth && ty >= y && ty <= y + buttonHeight;
+    }
+
     public void dispose() {
         texture.dispose();
         font.dispose();

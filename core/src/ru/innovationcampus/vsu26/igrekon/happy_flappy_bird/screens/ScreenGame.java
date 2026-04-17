@@ -1,13 +1,17 @@
-package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird;
+package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.screens;
 
 import static ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame.SCR_HEIGHT;
 import static ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame.SCR_WIDTH;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.ScreenUtils;
+
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.components.MovingBackground;
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame;
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.components.PointCounter;
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.characters.Bird;
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.characters.Tube;
 
 public class ScreenGame implements Screen {
 
@@ -33,7 +37,7 @@ public class ScreenGame implements Screen {
 
 
 
-    ScreenGame(MyGdxGame myGdxGame){
+    public ScreenGame(MyGdxGame myGdxGame){
         this.myGdxGame=myGdxGame;
 
         tubes = new Tube[tubeCount];

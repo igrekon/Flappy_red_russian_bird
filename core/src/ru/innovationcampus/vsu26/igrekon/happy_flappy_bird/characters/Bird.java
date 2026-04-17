@@ -1,7 +1,9 @@
-package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird;
+package ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.characters;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.MyGdxGame;
 
 public class Bird{
     int x,y;
@@ -31,7 +33,7 @@ public class Bird{
 
     }
 
-    void onClick() {
+    public void onClick() {
         jump =true;
         jumpHeight = maxHeightOfJump + y;
 

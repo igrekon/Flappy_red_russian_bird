@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.screens.ScreenGame;
+import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.screens.ScreenMenu;
 import ru.innovationcampus.vsu26.igrekon.happy_flappy_bird.screens.ScreenRestart;
 
 
@@ -24,8 +25,11 @@ public class MyGdxGame extends Game {
 
 
 
+	public ScreenMenu screenMenu;
 	public ScreenGame screenGame;
 	public ScreenRestart screenRestart;
+
+
 
 	
 	@Override
@@ -36,7 +40,8 @@ public class MyGdxGame extends Game {
 
 		screenGame = new ScreenGame(this);
 		screenRestart = new ScreenRestart(this);
-		setScreen(screenGame);
+		screenMenu = new ScreenMenu(this);
+		setScreen(screenMenu);
 	}
 
 

@@ -26,7 +26,7 @@ public class MovingBackground {
             texture1X = MyGdxGame.SCR_WIDTH;
         }
         if (texture2X<= -MyGdxGame.SCR_WIDTH){
-            texture1X = MyGdxGame.SCR_WIDTH;
+            texture2X = MyGdxGame.SCR_WIDTH;
         }
     }
 

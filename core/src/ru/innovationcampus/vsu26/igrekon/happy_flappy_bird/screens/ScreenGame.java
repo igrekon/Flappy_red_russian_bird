@@ -47,7 +47,7 @@ public class ScreenGame implements Screen {
         initTubes();
         background = new MovingBackground("background/game_bg.png");
 
-        bird = new Bird(20,SCR_HEIGHT /2,10,200,160);
+        bird = new Bird(20,SCR_HEIGHT /2,10,220,180);
         pointCounter = new PointCounter(SCR_WIDTH - pointCounterMarginRight, SCR_HEIGHT - pointCounterMarginTop);
     }
 
@@ -65,7 +65,7 @@ public class ScreenGame implements Screen {
             bird.onClick();
 
         }
-        background.move();
+        background.move(2);
         bird.fly();
         if (!bird.isinField()){
             System.out.println("not in field");

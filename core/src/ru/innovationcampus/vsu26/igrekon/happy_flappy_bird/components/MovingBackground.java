@@ -9,7 +9,8 @@ public class MovingBackground {
     Texture texture;
 
     int texture1X, texture2X;
-    int speed = 2;
+    int baseSpeed = 2;
+    int speed = 5;
 
     public MovingBackground(String pathToTexture){
         texture1X = 0;
@@ -18,15 +19,17 @@ public class MovingBackground {
     }
 
 
-    public void move(){
+    public void move(int score){
+        // Скорость растет на 1 за каждые 5 очков (настройте под себя)
+        int currentSpeed = baseSpeed + (score / 5);
         texture1X -=speed;
         texture2X-=speed;
 
-        if (texture1X<= -MyGdxGame.SCR_WIDTH){
-            texture1X = MyGdxGame.SCR_WIDTH;
+        if (texture1X <= -MyGdxGame.SCR_WIDTH){
+            texture1X = texture2X + MyGdxGame.SCR_WIDTH;
         }
-        if (texture2X<= -MyGdxGame.SCR_WIDTH){
-            texture2X = MyGdxGame.SCR_WIDTH;
+        if (texture2X <= -MyGdxGame.SCR_WIDTH){
+            texture2X = texture1X + MyGdxGame.SCR_WIDTH;
         }
     }
 
